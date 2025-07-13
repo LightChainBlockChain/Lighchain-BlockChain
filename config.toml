@@ -1,0 +1,68 @@
+[network]
+# Network configuration
+node_id = "lightchain-node-001"
+listen_port = 8080
+rpc_port = 8081
+p2p_port = 8082
+max_peers = 50
+network_id = "lightchain-mainnet"
+
+[blockchain]
+# Blockchain configuration
+mining_difficulty = 4
+block_time_seconds = 10
+max_transactions_per_block = 100
+genesis_reward = 1000.0
+mining_reward = 10.0
+transaction_fee = 0.01
+
+[consensus]
+# Consensus mechanism settings
+algorithm = "proof_of_work"
+target_block_time = 10
+difficulty_adjustment_interval = 2016
+max_block_size = 1048576  # 1MB
+
+[storage]
+# Data storage configuration
+data_directory = "./data"
+blockchain_db = "blockchain.db"
+wallet_db = "wallet.db"
+log_level = "info"
+
+[api]
+# API configuration
+enable_rpc = true
+rpc_host = "127.0.0.1"
+rpc_port = 8081
+enable_rest_api = true
+rest_api_host = "127.0.0.1"
+rest_api_port = 8080
+
+[governance]
+# Governance parameters
+proposal_voting_period = 604800  # 7 days in seconds
+minimum_voting_power = 100.0
+quorum_threshold = 0.5
+approval_threshold = 0.6
+
+[environment]
+# Environmental governance settings
+carbon_credit_rate = 0.1  # credits per kg CO2 reduced
+sustainability_score_threshold = 7.0
+environmental_data_reward = 1.0
+verification_reward = 5.0
+
+[integration]
+# Sideline_Pinas integration settings
+marketplace_api_url = "https://api.sideline-pinas.com"
+webhook_url = "https://lightchain.eco/webhook"
+integration_token = "your_integration_token_here"
+sync_interval = 30  # seconds
+
+[security]
+# Security settings
+enable_encryption = true
+key_derivation_rounds = 100000
+session_timeout = 3600  # 1 hour
+max_login_attempts = 5

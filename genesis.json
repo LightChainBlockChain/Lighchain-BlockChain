@@ -1,0 +1,94 @@
+{
+  "config": {
+    "chainId": 2024,
+    "networkName": "LightChain Environmental Governance Network",
+    "networkDescription": "Blockchain for environmental governance and sustainable marketplace integration",
+    "consensusAlgorithm": "ProofOfWork",
+    "blockTime": 10,
+    "difficulty": 4,
+    "gasLimit": 8000000,
+    "timestamp": 1705276800
+  },
+  "genesis": {
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "timestamp": 1705276800,
+    "difficulty": 4,
+    "gasLimit": 8000000,
+    "nonce": 0,
+    "extraData": "LightChain Genesis Block - Environmental Governance for Sustainable Future"
+  },
+  "alloc": {
+    "did:lightchain:foundation:treasury": {
+      "balance": "1000000000000000000000000",
+      "role": "treasury",
+      "description": "Foundation treasury for ecosystem development"
+    },
+    "did:lightchain:governance:council": {
+      "balance": "100000000000000000000000",
+      "role": "governance",
+      "description": "Governance council for proposal management"
+    },
+    "did:lightchain:rewards:environmental": {
+      "balance": "500000000000000000000000",
+      "role": "rewards",
+      "description": "Environmental rewards pool for carbon credits"
+    },
+    "did:lightchain:integration:sideline": {
+      "balance": "50000000000000000000000",
+      "role": "integration",
+      "description": "Sideline_Pinas marketplace integration account"
+    }
+  },
+  "governanceConfig": {
+    "proposalThreshold": 100000,
+    "quorumVotes": 400000,
+    "votingPeriod": 604800,
+    "votingDelay": 86400,
+    "proposalMaxOperations": 10,
+    "gracePeriod": 1209600
+  },
+  "environmentalConfig": {
+    "carbonCreditRate": 0.1,
+    "sustainabilityScoreThreshold": 7.0,
+    "environmentalDataReward": 1.0,
+    "verificationReward": 5.0,
+    "co2BaselineLevel": 400.0,
+    "temperatureBaselineLevel": 25.0,
+    "humidityBaselineLevel": 60.0
+  },
+  "integrationConfig": {
+    "marketplaceIntegration": {
+      "enabled": true,
+      "supportedMarketplaces": ["sideline_pinas"],
+      "transactionFee": 0.01,
+      "sustainabilityBonusRate": 0.05
+    },
+    "apiEndpoints": {
+      "marketplace": "https://api.sideline-pinas.com",
+      "webhook": "https://lightchain.eco/webhook"
+    }
+  },
+  "validators": [
+    {
+      "address": "did:lightchain:validator:node001",
+      "stake": 100000,
+      "commission": 0.1
+    },
+    {
+      "address": "did:lightchain:validator:node002", 
+      "stake": 100000,
+      "commission": 0.1
+    },
+    {
+      "address": "did:lightchain:validator:node003",
+      "stake": 100000,
+      "commission": 0.1
+    }
+  ],
+  "initialContracts": {
+    "carbonCreditContract": "did:lightchain:contract:carbon_credits",
+    "governanceContract": "did:lightchain:contract:governance",
+    "marketplaceContract": "did:lightchain:contract:marketplace",
+    "verificationContract": "did:lightchain:contract:verification"
+  }
+}
