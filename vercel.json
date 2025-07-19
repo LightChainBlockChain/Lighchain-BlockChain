@@ -1,0 +1,26 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/",
+      "destination": "/api/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "VERITOKEN_NETWORK": "mainnet",
+    "PORT": "3000"
+  },
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 10
+    }
+  }
+}

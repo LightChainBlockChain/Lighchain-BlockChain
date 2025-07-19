@@ -1,0 +1,18 @@
+---
+name: Get-ChildItem -Path
+command: "Get-ChildItem -Path \"C:\\Users\\Ronirei Light\\VeriToken-Marketplace\" | Select-Object Name, Mode, LastWriteTime{{argument_1}}{{argument_2}}"
+description: ~
+arguments:
+  - name: argument_1
+    arg_type: Text
+    description: ~
+    default_value: ~
+  - name: argument_2
+    arg_type: Text
+    description: ~
+    default_value: ~
+tags: []
+source_url: ~
+author: ~
+author_url: ~
+shells: []

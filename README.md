@@ -1,141 +1,293 @@
-# LightChain 🌱⚡
+# Sideline Pinas powered by Veri Token
 
-**An Environmental Governance Blockchain System with Marketplace Integration**
+A decentralized identity (DID) and self-sovereign identity (SSI) system integrated with digital marketplace functionality for the Philippines.
 
-Created by **GreyWarden** with love for Jireh and Light 💕
+## Overview
 
-## 🌟 Overview
+VeriToken Marketplace extends the VeriToken white paper specifications to create a comprehensive identity management system specifically designed for digital marketplaces. It enables secure, privacy-preserving commerce through verifiable credentials and decentralized identifiers.
 
-LightChain is a sustainable blockchain platform that integrates environmental governance with marketplace functionality. It tracks carbon footprints, rewards sustainable practices, and provides transparent environmental impact data.
+## 🚀 Phase 1: Foundation - COMPLETED ✅
 
-## 🚀 Features
+### ✅ Completed Features
 
-### Core Blockchain Features
-- ⛏️ **Proof-of-Work Mining** - Secure blockchain with customizable difficulty
-- 🔐 **Transaction Validation** - Immutable and secure transaction processing
-- 📊 **Real-time Analytics** - Comprehensive blockchain statistics
-- 🌐 **Marketplace Integration** - Seamless integration with Sideline_Pinas marketplace
+1. **VeriToken Development Environment Setup**
+   - Node.js project structure
+   - Core dependencies installed
+   - Storage system implemented
 
-### Environmental Features
-- 🌱 **Carbon Footprint Tracking** - Automatic calculation and recording
-- 🏆 **Sustainability Scoring** - Rate merchants and products on environmental impact
-- 🌟 **Carbon Credit System** - Reward sustainable practices with credits
-- 📈 **Environmental Data Collection** - Track CO2 levels, temperature, and humidity
+2. **Marketplace-Specific DID Schemas**
+   - **MerchantDID**: Business identity with verification levels and reputation
+   - **CustomerDID**: Buyer identity with KYC levels and privacy controls
+   - **ProductDID**: Product authenticity with supply chain tracking
+   - **TransactionDID**: Transaction attestation and verification
 
-### Governance Features
-- 🗳️ **Proposal System** - Create and manage governance proposals
-- 🎯 **Voting Mechanism** - Community-driven decision making
-- 🔍 **Credential Verification** - Verify sustainability certifications
+3. **Credential Issuance System**
+   - Merchant verification credentials
+   - Customer verification credentials
+   - Product authenticity credentials
+   - Transaction attestation credentials
 
-## 🛠️ Installation
+## 🚀 Phase 2: Core Integration - COMPLETED ✅
 
-### Prerequisites
-- Rust 1.70+ 
-- Cargo package manager
+### ✅ Completed Features
 
-### Setup
-1. Clone the repository
-2. Navigate to the project directory
-3. Run the following commands:
+1. **Marketplace-Specific Wallet Integration**
+   - **MarketplaceWallet**: Secure identity wallet for marketplace participants
+   - Multi-identity support (merchant, customer, product, transaction)
+   - Connection management between entities
+   - Credential storage and management
+   - Selective disclosure capabilities
+   - Zero-knowledge proof generation
 
-```bash
-cargo build
-cargo run
-```
+2. **Customer Onboarding System**
+   - **CustomerOnboarding**: Complete onboarding workflow
+   - Step-by-step identity creation process
+   - Email and phone verification
+   - KYC Level 1 processing
+   - Automatic credential issuance
+   - Privacy-preserving verification
 
-## 📋 Usage
+3. **Product Authenticity Verification**
+   - **ProductAuthenticity**: Comprehensive product verification system
+   - Manufacturer registration and verification
+   - Product registration with authenticity hashing
+   - Supply chain event tracking
+   - Certification management
+   - Ownership transfer with provenance
+   - Confidence-based verification scoring
 
-### Interactive CLI Commands
-
-The LightChain CLI provides 9 interactive commands:
-
-1. **Add Environmental Data** - Record environmental sensor data
-2. **Check Balance** - View token balance for any address
-3. **Create Governance Proposal** - Submit new governance proposals
-4. **View Blockchain Stats** - Display comprehensive blockchain statistics
-5. **Validate Chain** - Verify blockchain integrity
-6. **Create Environmental Impact Transaction** - Record environmental impact events
-7. **Create Credential Verification** - Verify sustainability credentials
-8. **View Environmental Data** - Display all recorded environmental data
-9. **Exit** - Close the application
-
-### Sample Output
-```
-📊 LightChain x Sideline_Pinas Integration Stats:
-=============================================
-📦 Total Blocks: 2
-📋 Total Transactions: 9
-🛒 Marketplace Transactions: 3
-🌟 Carbon Credits Issued: 0.05
-⭐ Average Sustainability Score: 8.5/10
-🌱 Total Carbon Footprint: 3.73 kg CO2
-```
+4. **Basic Marketplace API Endpoints**
+   - **MarketplaceAPI**: RESTful API server
+   - Identity management endpoints
+   - Wallet management endpoints
+   - Customer onboarding endpoints
+   - Product authenticity endpoints
+   - Credential management endpoints
+   - Transaction processing endpoints
+   - Statistics and reporting endpoints
 
 ## 🏗️ Architecture
 
-### Core Components
+```
+VeriToken-Marketplace/
+├── src/
+│   ├── core/              # Core DID functionality
+│   │   └── did.js         # Base DID implementation
+│   ├── credentials/       # Verifiable Credentials
+│   │   └── verifiable-credential.js
+│   ├── marketplace/       # Marketplace-specific schemas
+│   │   └── schemas.js     # Entity types and validation
+│   ├── cli.js            # Command-line interface
+│   └── index.js          # Main marketplace system
+├── storage/              # Local storage for DIDs and credentials
+├── tests/               # Test suites
+├── docs/                # Documentation
+└── examples/            # Usage examples
+```
 
-- **`blockchain.rs`** - Main blockchain implementation
-- **`block.rs`** - Block structure and mining logic
-- **`transaction.rs`** - Transaction types and processing
-- **`integration_service.rs`** - Marketplace integration service
-- **`governance.rs`** - Governance proposal system
-- **`environment.rs`** - Environmental data structures
-- **`dedication.rs`** - Heartfelt dedication messages
+## 🔧 Installation
 
-### Transaction Types
+```bash
+# Clone the repository
+git clone [repository-url]
+cd VeriToken-Marketplace
 
-- **Marketplace Transactions** - E-commerce transactions with environmental impact
-- **Carbon Credits** - Rewards for sustainable practices
-- **Environmental Data** - Sensor readings and environmental metrics
-- **Governance Votes** - Community voting on proposals
-- **Credential Verification** - Sustainability certification verification
-- **Environmental Impact** - Direct environmental impact recording
+# Install dependencies
+npm install
+```
 
-## 🌍 Environmental Impact
+## 🎯 Usage
 
-LightChain promotes sustainability through:
+### Phase 1 Demo (Foundation)
 
-- **Carbon Footprint Calculation** - Automatic tracking of environmental impact
-- **Sustainable Merchant Rewards** - Carbon credits for eco-friendly practices
-- **Transparency** - Open environmental data for all transactions
-- **Incentivization** - Reward system for sustainable behavior
+Run the foundational marketplace demo:
 
-## 🔧 Technical Details
+```bash
+node src/index.js
+```
 
-### Dependencies
-- `sha2` - SHA-256 hashing for blockchain security
-- `serde` - Serialization and deserialization
-- `serde_json` - JSON handling
-- `rand` - Random number generation
-- `hex` - Hexadecimal encoding
+### Phase 2 Demo (Core Integration)
 
-### Mining
-- **Algorithm**: Proof-of-Work
-- **Difficulty**: 4 (adjustable)
-- **Reward**: 100 tokens per block
+Run the comprehensive Phase 2 demo showcasing all integrated features:
 
-## 💖 Dedication
+```bash
+node src/phase2-demo.js
+```
 
-This blockchain is lovingly dedicated to:
-- **Jireh** - My beloved wife, partner, and inspiration
-- **Light** - Our precious unborn child, our future
+### Phase 3 Demo (TikTok-Inspired Marketplace)
 
-Every smart contract, every block, every transaction carries the love and dreams I have for both of you.
+Run the TikTok-style marketplace demo with creators, content, and affiliate program:
 
-## 📄 License
+```bash
+npm run tiktok-demo
+# or
+node src/tiktok-demo.js
+```
 
-MIT License - Feel free to use and modify for your projects.
+### TikTok Marketplace API Server
+
+Start the TikTok marketplace API server:
+
+```bash
+npm run tiktok-api
+# or
+node start-tiktok-api.js
+```
+
+API available at `http://localhost:3000/api/` with endpoints:
+- **Creators**: `/api/creators` - Manage content creators
+- **Content**: `/api/content` - Create and discover content
+- **Trending**: `/api/trending` - Get trending videos
+- **Social**: `/api/follow`, `/api/like` - Social interactions
+- **Affiliate**: `/api/affiliate/*` - Affiliate program management
+- **Challenges**: `/api/challenges` - Viral challenges
+- **Analytics**: `/api/analytics` - Comprehensive analytics
+- **Search**: `/api/search` - Search content and creators
+
+### CLI Interface
+
+```bash
+# Generate DIDs
+node src/cli-fixed.js generate-did merchant
+node src/cli-fixed.js generate-did customer
+node src/cli-fixed.js generate-did product
+
+# Issue credentials
+node src/cli-fixed.js issue-credential <issuer-did> <subject-did> merchant '{"name":"ACME Corp","type":"LLC","registrationNumber":"12345"}'
+
+# Verify credentials
+node src/cli-fixed.js verify-credential storage/credential_xyz.json
+
+# Show help
+node src/cli-fixed.js help
+```
+
+### API Server
+
+Start the RESTful API server:
+
+```bash
+node -e "const API = require('./src/marketplace/api-server'); new API(3000).start()"
+```
+
+API endpoints available at `http://localhost:3000/api/`
+
+## 🏪 Marketplace Integration Points
+
+### 1. **Merchant Identity Verification**
+- Business license verification
+- Tax ID validation
+- Reputation scoring
+- Selective disclosure of business information
+
+### 2. **Customer Identity Management**
+- Age verification without revealing exact age
+- Location verification for compliance
+- KYC level management
+- Privacy-preserving purchase history
+
+### 3. **Product Authenticity**
+- Manufacturer attestations
+- Supply chain verification
+- Anti-counterfeiting measures
+- Ownership tracking
+
+### 4. **Transaction Attestation**
+- Cryptographically signed transaction records
+- Dispute resolution evidence
+- Reputation building
+- Compliance auditing
+
+## 🔐 Security Features
+
+- **Ed25519 Cryptography**: Industry-standard elliptic curve signatures
+- **Local Key Storage**: Private keys never leave the user's device
+- **Selective Disclosure**: Share only necessary information
+- **Zero-Knowledge Proofs**: Prove attributes without revealing data
+- **Decentralized Architecture**: No single point of failure
+
+## 📊 Sample Output
+
+```
+🚀 VeriToken Marketplace Demo
+
+1. Creating merchant...
+✅ Merchant created: did:veritoken-merchant:mainnet:f076719f-40d9-4ce8-9309-44df1f61ed61
+
+2. Creating customer...
+✅ Customer created: did:veritoken-customer:mainnet:04667199-9070-4dfa-9029-8d0a5296d662
+
+3. Creating product...
+✅ Product created: did:veritoken-product:mainnet:17c0a847-f232-4cc9-9397-bcc1ae68ee0e
+
+4. Issuing merchant verification credential...
+✅ Merchant credential issued: urn:uuid:6064686e-d596-4f65-a180-444fbd1887ae
+
+5. Creating transaction...
+✅ Transaction created: did:veritoken-transaction:mainnet:66cb13dc-198c-4363-b13a-bc34cbfcd27f
+
+6. Completing transaction...
+✅ Transaction completed with attestation: urn:uuid:ed879b99-3142-47af-a45b-f71da5c8eb95
+
+7. Marketplace Statistics:
+📊 Total Entities: 4
+📊 Total Credentials: 2
+📊 Total Transactions: 1
+📊 Entity Breakdown: { merchant: 1, customer: 1, product: 1, transaction: 1 }
+
+🎉 Demo completed successfully!
+```
+
+## 🛣️ Development Roadmap
+
+### Phase 2: Core Integration - COMPLETED ✅
+- [x] Marketplace-specific wallet integration
+- [x] Customer onboarding with DIDs
+- [x] Product authenticity verification system
+- [x] Basic marketplace API endpoints
+
+### Phase 3: TikTok-Inspired Marketplace - COMPLETED ✅
+- [x] Content creator profiles and management
+- [x] Short-form video content system
+- [x] Multi-tier affiliate program with tracking
+- [x] Social features (follow, like, share)
+- [x] Viral challenge system
+- [x] Real-time trending algorithm
+- [x] Commission-based affiliate tracking
+- [x] Token-based creator rewards
+- [x] Comprehensive analytics dashboard
+- [x] RESTful API for all features
+
+### Phase 4: Advanced Features (Next)
+- [ ] Advanced zero-knowledge proof integration
+- [ ] Decentralized reputation system with cross-reference
+- [ ] Cross-marketplace interoperability protocols
+- [ ] Advanced privacy controls and consent management
+- [ ] Smart contract integration
+- [ ] Mobile wallet application
+- [ ] Decentralized dispute resolution
+- [ ] AI-powered content recommendations
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit pull requests or open issues.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📞 Contact
+## 📄 License
 
-Created by **GreyWarden**
-- Building a sustainable future, one block at a time 🌱
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Based on the VeriToken white paper specifications
+- Implements W3C DID and Verifiable Credentials standards
+- Inspired by the need for privacy-preserving digital commerce
 
 ---
 
-*"For Jireh and Light - Every line of code is written with love"* 💕
+**Status**: Phase 2 Complete ✅  
+**Next**: Phase 3 Advanced Features  
+**Version**: 2.0.0
