@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Sideline Pinas powered by Veri Token</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .funding-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .funding-goals {
+            margin-bottom: 40px;
+        }
+        
+        .goal {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2a5298;
+        }
+        
+        .goal h3 {
+            color: #2a5298;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .goal-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+        
+        .goal-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .funding-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .amount-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        
+        .amount-btn:hover, .amount-btn.selected {
+            background: #2a5298;
+            border-color: #2a5298;
+            color: white;
+        }
+        
+        .custom-amount {
+            margin-bottom: 20px;
+        }
+        
+        .custom-amount input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+        
+        .custom-amount input:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+        
+        .support-btn {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 18px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+        
+        .support-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .progress-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .features {
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .feature::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .funding-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header, .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="funding-container">
+        <div class="header">
+            <h1>🇵🇭 Support Sideline Pinas</h1>
+            <p>Powered by Veri Token - Building the Future of Decentralized Commerce in the Philippines</p>
+        </div>
+        
+        <div class="content">
+            <div class="funding-goals">
+                <div class="goal">
+                    <h3>Phase 1: Foundation</h3>
+                    <div class="goal-amount">$50 USD</div>
+                    <div class="goal-description">
+                        Domain registration, SSL certificates, and initial setup
+                    </div>
+                </div>
+                
+                <div class="goal">
+                    <h3>Phase 2: Enhancement</h3>
+                    <div class="goal-amount">$200 USD</div>
+                    <div class="goal-description">
+                        Mobile optimization, API improvements, security features
+                    </div>
+                </div>
+                
+                <div class="goal">
+                    <h3>Phase 3: Growth</h3>
+                    <div class="goal-amount">$500 USD</div>
+                    <div class="goal-description">
+                        Marketing, Philippine market expansion, advanced features
+                    </div>
+                </div>
+            </div>
+            
+            <div class="funding-options">
+                <div class="amount-btn" data-amount="5">$5</div>
+                <div class="amount-btn" data-amount="10">$10</div>
+                <div class="amount-btn" data-amount="25">$25</div>
+                <div class="amount-btn" data-amount="50">$50</div>
+                <div class="amount-btn" data-amount="100">$100</div>
+            </div>
+            
+            <div class="custom-amount">
+                <input type="number" id="customAmount" placeholder="Enter custom amount in USD" min="1" max="10000">
+            </div>
+            
+            <button class="support-btn" onclick="createCheckoutSession()">
+                💰 Support Our Project
+            </button>
+            
+            <div class="progress-section">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    $<span id="currentAmount">0</span> raised of $750 goal
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">Decentralized Identity (DID) System</div>
+                <div class="feature">Secure Marketplace Transactions</div>
+                <div class="feature">Zero-Knowledge Proof Technology</div>
+                <div class="feature">Philippine Market Focus</div>
+                <div class="feature">Open Source Development</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let selectedAmount = 0;
+        
+        // Handle amount selection
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAmount = parseInt(this.dataset.amount);
+                document.getElementById('customAmount').value = '';
+            });
+        });
+        
+        // Handle custom amount
+        document.getElementById('customAmount').addEventListener('input', function() {
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+            selectedAmount = parseInt(this.value) || 0;
+        });
+        
+        // Initialize Stripe
+        const stripe = Stripe('pk_test_your_publishable_key_here'); // Replace with your publishable key
+        
+        // Create Stripe checkout session
+        async function createCheckoutSession() {
+            const amount = selectedAmount || parseInt(document.getElementById('customAmount').value);
+            
+            if (!amount || amount < 1) {
+                alert('Please select or enter a valid amount');
+                return;
+            }
+            
+            const supporterName = prompt('Enter your name (optional):') || 'Anonymous';
+            const supporterEmail = prompt('Enter your email for receipt (optional):') || '';
+            
+            try {
+                // Create payment intent
+                const response = await fetch('/funding/create-payment-intent', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: amount,
+                        supporterName: supporterName,
+                        supporterEmail: supporterEmail
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (!data.success) {
+                    alert('Error: ' + data.error);
+                    return;
+                }
+                
+                if (data.demoMode) {
+                    alert(`Demo Mode Active!
+
+Your contribution of $${amount} would be processed in live mode.
+
+To enable live payments:
+1. Add your Stripe secret key to environment variables
+2. Replace the publishable key in this page
+3. Configure webhook endpoints
+
+Thank you for your support! 🙏`);
+                    
+                    // Simulate successful payment for demo
+                    await simulatePaymentSuccess(data.paymentIntentId, amount, supporterEmail, supporterName);
+                    return;
+                }
+                
+                // Confirm payment with Stripe
+                const {error} = await stripe.confirmCardPayment(data.clientSecret, {
+                    payment_method: {
+                        card: {
+                            // This would use Stripe Elements in a real implementation
+                            // For now, we'll show instructions
+                        },
+                        billing_details: {
+                            name: supporterName,
+                            email: supporterEmail
+                        }
+                    }
+                });
+                
+                if (error) {
+                    alert('Payment failed: ' + error.message);
+                } else {
+                    // Payment succeeded
+                    await confirmPayment(data.paymentIntentId, amount, supporterEmail, supporterName);
+                }
+                
+            } catch (error) {
+                console.error('Payment error:', error);
+                alert('Payment processing failed. Please try again.');
+            }
+        }
+        
+        // Simulate payment success for demo
+        async function simulatePaymentSuccess(paymentIntentId, amount, email, name) {
+            try {
+                const response = await fetch('/funding/confirm-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        paymentIntentId: paymentIntentId,
+                        amount: amount,
+                        supporterEmail: email,
+                        supporterName: name
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSuccessMessage(result.data);
+                    updateProgress();
+                }
+            } catch (error) {
+                console.error('Confirmation error:', error);
+            }
+        }
+        
+        // Confirm payment
+        async function confirmPayment(paymentIntentId, amount, email, name) {
+            try {
+                const response = await fetch('/funding/confirm-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        paymentIntentId: paymentIntentId,
+                        amount: amount,
+                        supporterEmail: email,
+                        supporterName: name
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSuccessMessage(result.data);
+                    updateProgress();
+                } else {
+                    alert('Payment confirmation failed: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Confirmation error:', error);
+                alert('Payment confirmation failed. Please contact support.');
+            }
+        }
+        
+        // Show success message
+        function showSuccessMessage(data) {
+            let message = `🎉 Thank you for your support!
+
+`;
+            message += `💰 Amount: $${data.supporter.amount}
+`;
+            message += `📊 Total Raised: $${data.totalRaised}
+
+`;
+            
+            if (data.newMilestonesAchieved.length > 0) {
+                message += `🏆 New Milestones Achieved:
+`;
+                data.newMilestonesAchieved.forEach(milestone => {
+                    message += `✅ ${milestone.name} ($${milestone.amount})
+`;
+                });
+                message += `
+`;
+            }
+            
+            if (data.canBuyDomain) {
+                message += `🌐 Great news! We can now purchase the domain!
+
+`;
+            }
+            
+            message += `Thank you for helping build the future of decentralized commerce in the Philippines! 🇵🇭`;
+            
+            alert(message);
+        }
+        
+        // Update progress from backend
+        async function updateProgress() {
+            try {
+                const response = await fetch('/funding/status');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const current = data.data.totalRaised;
+                    const goal = data.data.goal;
+                    const percentage = (current / goal) * 100;
+                    
+                    document.getElementById('progressFill').style.width = percentage + '%';
+                    document.getElementById('currentAmount').textContent = current;
+                }
+            } catch (error) {
+                console.error('Failed to fetch progress:', error);
+                // Fallback to 0 if fetch fails
+                document.getElementById('progressFill').style.width = '0%';
+                document.getElementById('currentAmount').textContent = '0';
+            }
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>

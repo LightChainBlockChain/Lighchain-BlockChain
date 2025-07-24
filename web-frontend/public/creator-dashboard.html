@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Commission Dashboard - Ronirei Light</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .metamask-orange { background: linear-gradient(135deg, #f6851b 0%, #e2761b 100%); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-crown text-2xl text-yellow-600 mr-2"></i>
+                        <span class="font-bold text-xl text-gray-800">Creator Dashboard</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="connectMetaMask" class="metamask-orange text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                        <i class="fab fa-ethereum mr-2"></i>Connect MetaMask
+                    </button>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2 pulse-slow"></div>
+                        <span>Live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="gradient-bg text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">
+                    👑 Creator Commission Dashboard
+                </h1>
+                <p class="text-xl mb-4">Ronirei Light - Creator & Lead Developer</p>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                    <p class="text-sm">MetaMask Address:</p>
+                    <p class="font-mono text-lg" id="creatorAddress">0x568b65e3C2572f355d08c284348C492856a95F88</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commission Stats -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Earned</p>
+                            <p class="text-2xl font-bold text-green-600" id="totalEarned">$0.00</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Pending Commission</p>
+                            <p class="text-2xl font-bold text-blue-600" id="pendingAmount">$0.00</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clock text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Transactions</p>
+                            <p class="text-2xl font-bold text-purple-600" id="totalTransactions">0</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exchange-alt text-purple-600"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Commission Rate</p>
+                            <p class="text-2xl font-bold text-yellow-600" id="commissionRate">10%</p>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-percentage text-yellow-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4">💰 Claim Commission</h3>
+                    <p class="text-gray-600 mb-4">Claim your pending commission earnings to your MetaMask wallet</p>
+                    <button id="claimCommission" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                        <i class="fas fa-coins mr-2"></i>Claim Pending Commission
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4">📊 Integration Status</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>MetaMask Address Verified</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>10% Commission Rate Active</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Auto-Processing Enabled</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Multi-Network Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold mb-6">📋 Recent Commission History</h3>
+                <div id="transactionHistory">
+                    <div class="text-center py-8 text-gray-500">
+                        <i class="fas fa-history text-3xl mb-4"></i>
+                        <p>No commission history yet</p>
+                        <p class="text-sm">Commissions will appear here as transactions are processed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 EcoGov_Lightchain_Final. Creator: Ronirei Light</p>
+            <p class="text-sm text-gray-400 mt-2">Powered by VeriToken & Sideline Pinas Marketplace</p>
+        </div>
+    </footer>
+
+    <script>
+        const API_BASE = window.location.origin + '/api';
+        let connectedAddress = null;
+
+        // Load commission data
+        async function loadCommissionData() {
+            try {
+                const response = await fetch(`${API_BASE}/creator/commission-status`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    updateDashboard(data);
+                }
+            } catch (error) {
+                console.error('Error loading commission data:', error);
+            }
+        }
+
+        // Update dashboard with data
+        function updateDashboard(data) {
+            document.getElementById('totalEarned').textContent = `$${data.commissions.totalEarned.toFixed(4)}`;
+            document.getElementById('pendingAmount').textContent = `$${data.commissions.pendingAmount.toFixed(4)}`;
+            document.getElementById('totalTransactions').textContent = data.commissions.totalTransactions;
+            document.getElementById('commissionRate').textContent = data.commissions.commissionRate;
+            
+            // Update recent transactions
+            if (data.recentTransactions && data.recentTransactions.length > 0) {
+                displayTransactionHistory(data.recentTransactions);
+            }
+        }
+
+        // Display transaction history
+        function displayTransactionHistory(transactions) {
+            const container = document.getElementById('transactionHistory');
+            container.innerHTML = '';
+            
+            transactions.forEach(tx => {
+                const txElement = document.createElement('div');
+                txElement.className = 'border-b border-gray-200 py-4 flex justify-between items-center';
+                txElement.innerHTML = `
+                    <div>
+                        <p class="font-semibold">${tx.transactionType}</p>
+                        <p class="text-sm text-gray-600">${new Date(tx.timestamp).toLocaleDateString()}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-green-600">+$${tx.commissionAmount.toFixed(4)}</p>
+                        <p class="text-sm text-gray-600">${tx.status}</p>
+                    </div>
+                `;
+                container.appendChild(txElement);
+            });
+        }
+
+        // Connect MetaMask
+        document.getElementById('connectMetaMask').addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    connectedAddress = accounts[0];
+                    
+                    // Verify this is the creator's address
+                    const creatorAddress = '0x568b65e3C2572f355d08c284348C492856a95F88';
+                    if (connectedAddress.toLowerCase() === creatorAddress.toLowerCase()) {
+                        document.getElementById('connectMetaMask').innerHTML = '<i class="fas fa-check mr-2"></i>Connected';
+                        document.getElementById('connectMetaMask').classList.add('bg-green-600');
+                        alert('✅ MetaMask Connected!\n\nCreator wallet verified successfully.');
+                    } else {
+                        alert('⚠️ Wallet Mismatch\n\nThis is not the creator\'s registered wallet address.\nExpected: ' + creatorAddress + '\nConnected: ' + connectedAddress);
+                    }
+                } catch (error) {
+                    console.error('MetaMask connection error:', error);
+                    alert('❌ Connection Failed\n\nUnable to connect to MetaMask. Please try again.');
+                }
+            } else {
+                alert('🦊 MetaMask Not Found\n\nPlease install MetaMask browser extension to connect your wallet.');
+            }
+        });
+
+        // Claim commission
+        document.getElementById('claimCommission').addEventListener('click', async () => {
+            if (!connectedAddress) {
+                alert('Please connect your MetaMask wallet first.');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/creator/claim-commission`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        walletAddress: connectedAddress
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`🎉 Commission Claimed Successfully!\n\nAmount: $${result.claim.amount.toFixed(4)}\nTransaction Hash: ${result.claim.transactionHash}\n\nCheck your MetaMask for the incoming transaction.`);
+                    loadCommissionData(); // Refresh data
+                } else {
+                    alert(`❌ Claim Failed\n\n${result.error}`);
+                }
+            } catch (error) {
+                console.error('Commission claim error:', error);
+                alert('❌ Error claiming commission. Please try again.');
+            }
+        });
+
+        // Auto-refresh data every 30 seconds
+        setInterval(loadCommissionData, 30000);
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCommissionData();
+        });
+    </script>
+</body>
+</html>

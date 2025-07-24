@@ -1,0 +1,62 @@
+{
+  "name": "lightchain-complete-ecosystem",
+  "version": "2.0.0",
+  "description": "LightChain BlockChain - Complete ecosystem for environmental governance, digital marketplace, and Web3 applications",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm run install:api && npm run install:frontend && npm run install:contracts",
+    "install:api": "cd api-server && npm install",
+    "install:frontend": "cd web-frontend && npm install", 
+    "install:contracts": "cd smart-contracts && npm install",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:frontend\" \"npm run dev:blockchain\"",
+    "dev:api": "cd api-server && npm run dev",
+    "dev:frontend": "cd web-frontend && npm start",
+    "dev:blockchain": "cd blockchain && cargo run",
+    "dev:contracts": "cd smart-contracts && npx hardhat node",
+    "build": "npm run build:api && npm run build:frontend && npm run build:blockchain",
+    "build:api": "cd api-server && npm run build",
+    "build:frontend": "cd web-frontend && npm run build",
+    "build:blockchain": "cd blockchain && cargo build --release",
+    "test": "npm run test:api && npm run test:frontend && npm run test:blockchain",
+    "test:api": "cd api-server && npm test",
+    "test:frontend": "cd web-frontend && npm test",
+    "test:blockchain": "cd blockchain && cargo test",
+    "deploy:vercel": "cd web-frontend && vercel deploy --prod",
+    "deploy:contracts": "cd smart-contracts && npx hardhat run scripts/deploy.js --network mainnet"
+  },
+  "workspaces": [
+    "api-server",
+    "web-frontend", 
+    "smart-contracts"
+  ],
+  "keywords": [
+    "blockchain",
+    "rust",
+    "solidity",
+    "web3",
+    "defi",
+    "environmental",
+    "marketplace",
+    "veritoken",
+    "climate",
+    "sustainability"
+  ],
+  "author": "LightChain Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LightChainBlockChain/LightChain-Complete.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LightChainBlockChain/LightChain-Complete/issues"
+  },
+  "homepage": "https://github.com/LightChainBlockChain/LightChain-Complete#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lerna": "^7.4.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

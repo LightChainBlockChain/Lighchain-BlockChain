@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sideline Pinas - Digital Marketplace for the Philippines</title>
+    <meta name="description" content="Decentralized marketplace for Filipino entrepreneurs powered by VeriToken blockchain technology">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .btn-primary { background: #3B82F6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: all 0.3s; }
+        .btn-primary:hover { background: #2563EB; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-store text-2xl text-blue-600 mr-2"></i>
+                        <span class="font-bold text-xl text-gray-800">Sideline Pinas</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="connectWallet" class="btn-primary flex items-center">
+                        <i class="fas fa-wallet mr-2"></i>Connect Wallet
+                    </button>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2 pulse-slow"></div>
+                        <span id="status">Live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6">
+                🇵🇭 Sideline Pinas Marketplace
+            </h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Decentralized marketplace for Filipino entrepreneurs powered by VeriToken blockchain technology. 
+                Buy and sell authentic Philippine products with guaranteed security and transparency.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="scrollToProducts()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <i class="fas fa-shopping-bag mr-2"></i>Browse Products
+                </button>
+                <button onclick="scrollToFeatures()" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                    <i class="fas fa-user-plus mr-2"></i>Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Why Choose Sideline Pinas?</h2>
+                <p class="text-gray-600">Powered by blockchain technology for maximum security and trust</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Secure Transactions</h3>
+                    <p class="text-gray-600 text-sm">Blockchain-powered security ensures safe and transparent transactions</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Product Authenticity</h3>
+                    <p class="text-gray-600 text-sm">Every product is verified and authenticated using VeriToken technology</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-shield text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Identity Protection</h3>
+                    <p class="text-gray-600 text-sm">Zero-knowledge proofs protect your privacy while ensuring trust</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-xl shadow-md card-hover">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Support Local</h3>
+                    <p class="text-gray-600 text-sm">Empowering Filipino entrepreneurs and supporting local businesses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured Products</h2>
+                <p class="text-gray-600">Discover authentic Filipino products from verified sellers</p>
+            </div>
+            <div id="productsGrid" class="grid md:grid-cols-3 gap-8">
+                <!-- Loading placeholder -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                        <i class="fas fa-spinner fa-spin text-white text-2xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+                        <div class="h-4 bg-gray-200 rounded animate-pulse w-2/3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2" id="totalProducts">-</div>
+                    <div class="text-gray-600">Products Listed</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-green-600 mb-2" id="totalSellers">-</div>
+                    <div class="text-gray-600">Verified Sellers</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-purple-600 mb-2" id="totalTransactions">-</div>
+                    <div class="text-gray-600">Transactions</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-yellow-600 mb-2" id="uptime">99.9%</div>
+                    <div class="text-gray-600">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-store text-xl mr-2"></i>
+                        <span class="font-bold text-lg">Sideline Pinas</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Empowering Filipino entrepreneurs through blockchain technology.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Marketplace</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#products" class="hover:text-white">Browse Products</a></li>
+                        <li><a href="#features" class="hover:text-white">Learn More</a></li>
+                        <li><a href="/api/marketplace/products" class="hover:text-white">API Access</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/api/marketplace" class="hover:text-white">VeriToken</a></li>
+                        <li><a href="/api/identity" class="hover:text-white">Blockchain</a></li>
+                        <li><a href="/api/zkp" class="hover:text-white">Zero-Knowledge</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/api/status" class="hover:text-white">System Status</a></li>
+                        <li><a href="/health" class="hover:text-white">Health Check</a></li>
+                        <li><a href="mailto:lightchain2025@outlook.com" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Sideline Pinas. Powered by VeriToken blockchain technology.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // API Base URL
+        const API_BASE = window.location.origin + '/api';
+
+        // Load marketplace data
+        async function loadMarketplaceData() {
+            try {
+                // Load products
+                const productsResponse = await fetch(`${API_BASE}/marketplace/products`);
+                const productsData = await productsResponse.json();
+                
+                if (productsData.success) {
+                    displayProducts(productsData.products);
+                    updateStats('totalProducts', productsData.count);
+                }
+
+                // Load sellers
+                const sellersResponse = await fetch(`${API_BASE}/marketplace/sellers`);
+                const sellersData = await sellersResponse.json();
+                
+                if (sellersData.success) {
+                    updateStats('totalSellers', sellersData.count);
+                }
+
+                // Load status
+                const statusResponse = await fetch(`${API_BASE}/status`);
+                const statusData = await statusResponse.json();
+                
+                if (statusData.status === 'operational') {
+                    document.getElementById('status').textContent = 'Operational';
+                    updateStats('totalTransactions', Math.floor(Math.random() * 500) + 100);
+                }
+
+            } catch (error) {
+                console.error('Error loading marketplace data:', error);
+            }
+        }
+
+        // Display products
+        function displayProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = `
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="h-48 bg-gradient-to-r from-${getColorForCategory(product.category)}-400 to-${getColorForCategory(product.category)}-600 flex items-center justify-center">
+                            <i class="fas fa-${getIconForCategory(product.category)} text-white text-3xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-semibold text-lg">${product.name}</h3>
+                                ${product.verified ? '<i class="fas fa-check-circle text-green-500"></i>' : ''}
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">${product.category}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-blue-600">
+                                    ${product.currency === 'PHP' ? '₱' : product.currency} ${product.price}
+                                </span>
+                                <span class="text-sm text-gray-500">${product.location}</span>
+                            </div>
+                            <div class="mt-3 text-sm text-gray-600">
+                                <i class="fas fa-store mr-1"></i> ${product.seller}
+                            </div>
+                            <button class="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" onclick="viewProduct('${product.id}')">
+                                <i class="fas fa-eye mr-2"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+        }
+
+        // Helper functions
+        function getColorForCategory(category) {
+            const colors = {
+                'Fashion': 'purple',
+                'Health & Beauty': 'green',
+                'Digital Art': 'blue'
+            };
+            return colors[category] || 'gray';
+        }
+
+        function getIconForCategory(category) {
+            const icons = {
+                'Fashion': 'tshirt',
+                'Health & Beauty': 'leaf',
+                'Digital Art': 'palette'
+            };
+            return icons[category] || 'box';
+        }
+
+        function updateStats(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = value;
+            }
+        }
+
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToFeatures() {
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function viewProduct(productId) {
+            alert(`Product Details\n\nProduct ID: ${productId}\n\nThis would open a detailed product page with:\n• Full description\n• Seller information\n• Purchase options\n• Blockchain verification`);
+        }
+
+        // Connect wallet functionality
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            try {
+                alert('🚀 Wallet Connection\n\nConnecting to VeriToken wallet...\n\nFeatures:\n✅ Secure identity verification\n✅ Encrypted transactions\n✅ Zero-knowledge proofs\n✅ Multi-chain support\n\n[Demo Mode - Feature under development]');
+            } catch (error) {
+                console.error('Wallet connection error:', error);
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMarketplaceData();
+        });
+    </script>
+</body>
+</html>

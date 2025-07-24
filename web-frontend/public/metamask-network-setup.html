@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hardhat Network to MetaMask - VeriToken</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .metamask-orange { background: linear-gradient(135deg, #f6851b 0%, #e2761b 100%); }
+        .success-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .code-block { background: #1f2937; color: #f9fafb; padding: 1rem; border-radius: 0.5rem; font-family: 'Courier New', monospace; }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-network-wired text-2xl text-blue-600 mr-2"></i>
+                        <span class="font-bold text-xl text-gray-800">MetaMask Network Setup</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="addNetwork" class="metamask-orange text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition">
+                        <i class="fas fa-plus mr-2"></i>Add Hardhat Network
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="gradient-bg text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-bold mb-4">
+                🔗 Connect to Hardhat Network
+            </h1>
+            <p class="text-xl mb-4">Add the local Hardhat network to see your VeriTokens</p>
+            <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                <p class="text-sm">Your VERI Contract:</p>
+                <p class="font-mono text-lg">0x5FbDB2315678afecb367f032d93F642f64180aa3</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Configuration -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Quick Setup -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-center">⚡ Quick Setup</h2>
+                <div class="text-center mb-6">
+                    <button id="autoAddNetwork" class="success-green text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition text-lg">
+                        <i class="fas fa-magic mr-2"></i>Auto-Add Hardhat Network to MetaMask
+                    </button>
+                </div>
+                <p class="text-center text-gray-600">Click the button above to automatically add the Hardhat network to your MetaMask!</p>
+            </div>
+
+            <!-- Manual Setup -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-6">🔧 Manual Network Setup</h2>
+                <p class="text-gray-600 mb-6">If the automatic setup doesn't work, you can manually add the network using these details:</p>
+                
+                <div class="code-block mb-6">
+                    <div class="mb-2"><strong>Network Name:</strong> Hardhat Local</div>
+                    <div class="mb-2"><strong>New RPC URL:</strong> http://127.0.0.1:8545</div>
+                    <div class="mb-2"><strong>Chain ID:</strong> 1337</div>
+                    <div class="mb-2"><strong>Currency Symbol:</strong> ETH</div>
+                    <div><strong>Block Explorer URL:</strong> (Leave empty)</div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Important:</strong> Make sure your Hardhat node is running on port 8545 before adding this network!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step by Step Guide -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold mb-6">📋 Step-by-Step Manual Setup</h2>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Open MetaMask Network Settings</h3>
+                            <p class="text-gray-600">Click on the network dropdown in MetaMask (it probably says "Ethereum Mainnet" or another network name) and select "Add Network"</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Add Network Manually</h3>
+                            <p class="text-gray-600 mb-3">Click "Add a network manually" and fill in these details:</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="grid grid-cols-1 gap-2 text-sm">
+                                    <div><strong>Network Name:</strong> Hardhat Local</div>
+                                    <div><strong>New RPC URL:</strong> http://127.0.0.1:8545</div>
+                                    <div><strong>Chain ID:</strong> 1337</div>
+                                    <div><strong>Currency Symbol:</strong> ETH</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Save and Switch</h3>
+                            <p class="text-gray-600">Click "Save" and MetaMask will automatically switch to the Hardhat network</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Add Your VERI Token</h3>
+                            <p class="text-gray-600 mb-3">Now add your VeriToken using these details:</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="grid grid-cols-1 gap-2 text-sm">
+                                    <div><strong>Contract Address:</strong> 0x5FbDB2315678afecb367f032d93F642f64180aa3</div>
+                                    <div><strong>Token Symbol:</strong> VERI</div>
+                                    <div><strong>Decimals:</strong> 18</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Section -->
+    <section class="py-8 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-center">🔍 Connection Status</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4">
+                        <div class="text-2xl mb-2" id="networkStatus">🔴</div>
+                        <div class="text-sm font-semibold">Network</div>
+                        <div class="text-xs text-gray-600" id="networkName">Not Connected</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-2xl mb-2" id="accountStatus">🔴</div>
+                        <div class="text-sm font-semibold">Account</div>
+                        <div class="text-xs text-gray-600" id="accountAddress">Not Connected</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-2xl mb-2" id="tokenStatus">🔴</div>
+                        <div class="text-sm font-semibold">VERI Token</div>
+                        <div class="text-xs text-gray-600" id="tokenBalance">Not Added</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 VeriToken Network Setup. Creator: Ronirei Light</p>
+        </div>
+    </footer>
+
+    <script>
+        // Network configuration
+        const HARDHAT_NETWORK = {
+            chainId: '0x539', // 1337 in hex
+            chainName: 'Hardhat Local',
+            rpcUrls: ['http://127.0.0.1:8545'],
+            nativeCurrency: {
+                name: 'Ethereum',
+                symbol: 'ETH',
+                decimals: 18
+            }
+        };
+
+        const VERI_TOKEN = {
+            address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+            symbol: 'VERI',
+            decimals: 18,
+            image: 'https://via.placeholder.com/64x64.png?text=VERI'
+        };
+
+        const CREATOR_ADDRESS = '0x568b65e3C2572f355d08c284348C492856a95F88';
+
+        // Auto-add network
+        document.getElementById('autoAddNetwork').addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Add the network
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [HARDHAT_NETWORK]
+                    });
+
+                    alert('🎉 Network Added Successfully!\n\nHardhat Local network has been added to MetaMask. Now you can add your VERI token!');
+                    
+                    // Try to add the token automatically
+                    setTimeout(async () => {
+                        try {
+                            const wasAdded = await window.ethereum.request({
+                                method: 'wallet_watchAsset',
+                                params: {
+                                    type: 'ERC20',
+                                    options: VERI_TOKEN,
+                                },
+                            });
+
+                            if (wasAdded) {
+                                alert('🪙 VERI Token Added!\n\nYour VeriToken has been added to MetaMask. You should now see your 400M VERI balance!');
+                            }
+                        } catch (tokenError) {
+                            console.error('Error adding token:', tokenError);
+                            alert('⚠️ Network added, but token addition failed. Please add the token manually using the contract address: ' + VERI_TOKEN.address);
+                        }
+                    }, 2000);
+
+                } catch (error) {
+                    console.error('Error adding network:', error);
+                    if (error.code === 4902) {
+                        alert('❌ Network Addition Failed\n\nPlease add the network manually using the details provided below.');
+                    } else {
+                        alert('❌ Error: ' + error.message);
+                    }
+                }
+            } else {
+                alert('🦊 MetaMask Not Found\n\nPlease install MetaMask browser extension.');
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        });
+
+        // Manual add network button
+        document.getElementById('addNetwork').addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [HARDHAT_NETWORK]
+                    });
+                    alert('✅ Network added successfully!');
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('❌ Error adding network: ' + error.message);
+                }
+            } else {
+                alert('🦊 Please install MetaMask');
+            }
+        });
+
+        // Check connection status
+        async function updateStatus() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Check network
+                    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+                    if (chainId === '0x539') {
+                        document.getElementById('networkStatus').textContent = '🟢';
+                        document.getElementById('networkName').textContent = 'Hardhat Local';
+                    } else {
+                        document.getElementById('networkStatus').textContent = '🟡';
+                        document.getElementById('networkName').textContent = 'Wrong Network';
+                    }
+
+                    // Check account
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    if (accounts.length > 0) {
+                        document.getElementById('accountStatus').textContent = '🟢';
+                        document.getElementById('accountAddress').textContent = accounts[0].substring(0, 6) + '...' + accounts[0].substring(38);
+                        
+                        // Check if it's the creator's address
+                        if (accounts[0].toLowerCase() === CREATOR_ADDRESS.toLowerCase()) {
+                            document.getElementById('tokenStatus').textContent = '🟢';
+                            document.getElementById('tokenBalance').textContent = '400M VERI';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Status check error:', error);
+                }
+            }
+        }
+
+        // Update status on load and periodically
+        window.addEventListener('load', updateStatus);
+        setInterval(updateStatus, 5000);
+
+        // Listen for account/network changes
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.on('accountsChanged', updateStatus);
+            window.ethereum.on('chainChanged', updateStatus);
+        }
+    </script>
+</body>
+</html>
